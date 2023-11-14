@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1 class="title">{{ movie.title }}</h1>
+
+      <div class="container">
+        <div class="card">
+          <img
+            :src="movie.images[activeIndex]"
+            alt="Poster del film TITOLO"
+          />
+
+          <!-- Thumbs -->
+          <div class="thumbs">
+            <img v-for="(img, index) in movie.images" :src="img" alt="" :class="index === activeIndex ? 'active' : ''">
+          </div>
+
+          <!-- Navigation -->
+          <div class="navigation">
+            <div class="prev" @click="showPrev">&LeftArrow;</div>
+            <div class="next" @click="showNext">&RightArrow;</div>
+          </div>
+
+          <!-- Details -->
+          <div class="details">
+            <p>Category: {{ movie.category }}</p>
+            <p>Durata: {{ movie.length }} min</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
